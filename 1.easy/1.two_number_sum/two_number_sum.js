@@ -42,7 +42,7 @@ lookupTarget(array, targetSum) //?
  * if adding any number in the rest of the array to the number yields the target sum, return the pair.
  *
  * Complexity Analysis:
- *  Time Complexity: O( N ^ 2), where is the length of the input array.
+ *  Time Complexity: O( n^2 ), where is the length of the input array.
  *  Space Complexity: O( 1 )
  */
 
@@ -67,7 +67,7 @@ console.log(
  * Approach 2: Two Pass with Hash Table
  *
  * In the brute force approach above, the repeated search for each number's complement (target sum - array[i]) slows down the overall runtime.
- * We can reduce the search from O(N) to amortized O(1) by throwing all the number in the array into a hash table, trading space for time.
+ * We can reduce the search from O( n ) to amortized O( 1 ) by throwing all the number in the array into a hash table, trading space for time.
  * We need to ensure that the complement is not the current number itself though.
  * For instance, suppose the input array is [5, 2] and the target sum is 10, the hash table is going to be {5: value, 2: value}.
  * The complement of 5 is 5 (10 - 5 = 5) and 5 does exist in the hash table,
@@ -76,8 +76,11 @@ console.log(
  *
  *  Algorithm:
  *
- *      Go through the input array. Add each number as key and its index as value to the hash table.
- *      Loop through the input array again. Check if each number's complement is present in the hash table. If it is present and is not the current number itself, return the current number and its complement.
+ *      Go through the input array.
+ * 		Add each number as key and its index as value to the hash table.
+ *      Loop through the input array again.
+ * 		Check if each number's complement is present in the hash table.
+ * 		If it is present and is not the current number itself, return the current number and its complement.
  *
  *  Complexity Analysis
  *
@@ -126,7 +129,7 @@ const quick_hash_two_number_sum = (array, target) => {
 			return [complement, num] //?
 		}
 
-		hashTable.set(num, true)
+		hashTable.set(num, true) //?
 	}
 	return []
 }
@@ -138,12 +141,13 @@ quick_hash_two_number_sum(array, targetSum) //?
  *
  * We sort the input array in ascending order and use two pointers to find the pair in the array.
  *
- * Suppose the input array is [5, 1, -2, 6, -4, 9] and the target sum is 3. After sotring the array, we get [-4, -2, 1, 5, 6, 9]. We initialize two pointers l and r to point to the first and last elements in the array respectively.
- *
+ * 		Suppose the input array is [5, 1, -2, 6, -4, 9] and the target sum is 3.
+ * 		After sotring the array, we get [-4, -2, 1, 5, 6, 9].
+ * 		We initialize two pointers l and r to point to the first and last elements in the array respectively.
  *
  * Complexity Analysis
  *
- *  Time Complexity: O(n - log(n)), where N is the length of the input array.
+ *  Time Complexity: O(n - log(n)), where n is the length of the input array.
  *  Space Complexity: O(log(n)) or O(n), depending on the implementation of the sorting algorithm.
  */
 
@@ -154,7 +158,7 @@ const pointer_n_sort_tns = (array, target) => {
 	let right = array.length - 1
 
 	while (left < right) {
-		const currSum = array[left] + array[right]
+		const currSum = array[left] + array[right] //?
 		if (currSum === target) {
 			return [array[left], array[right]] //?
 		}
